@@ -10,3 +10,4 @@ venv/
 aa.py
 .vscode/
 *.log
+data/
