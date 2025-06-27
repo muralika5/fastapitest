@@ -6,7 +6,7 @@ from typing import List
 
 def create_address(db: Session, address: AddressCreate) -> Address:
     """Create a new address in the database"""
-    db_address = Address(**address.dict())
+    db_address = Address(**address.model_dump())
     db.add(db_address)
     db.commit()
     db.refresh(db_address)
@@ -27,7 +27,7 @@ def update_address(db: Session, address_id: int, address: AddressUpdate) -> Addr
         return None
     
     # Update only provided fields
-    update_data = address.dict(exclude_unset=True)
+    update_data = address.model_dump(exclude_unset=True)
     for field, value in update_data.items():
         setattr(db_address, field, value)
     

@@ -7,8 +7,6 @@ import crud
 from database import SessionLocal, engine
 from geopy.distance import geodesic
 
-# Create database tables
-models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="Address Book API",
